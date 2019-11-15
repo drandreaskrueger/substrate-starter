@@ -10,8 +10,14 @@ SUBSTRATE=node-template
 # keys and chainspec are stored in folder 
 GENERATED=generated
 
+# logfiles go into this folder
+LOGFILES=logs
+
 # all scripts live in folder
 SCRIPTS=scripts
+
+# data folders for the nodes
+BASEPATH=/tmp
 
 # naming of the nodes begins with
 FILESTUB=SS
@@ -21,6 +27,14 @@ TEMPLATE="local"
 
 # my own chainspec is named:
 CHAIN="$GENERATED/$FILESTUB"-raw.json
+
+# CLI args for all nodes: 
+CONFIG="--validator --chain "$CHAIN" --telemetry-url ws://telemetry.polkadot.io:1024"
+
+# ports of the FIRST node, subsequent nodes are incremented+1
+PORT_P2P=30333
+PORT_RPC=9933
+PORT_WS=9944
 
 # first arg must be number of nodes 
 checknum () {
