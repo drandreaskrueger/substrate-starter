@@ -4,6 +4,8 @@
 #                 sudo pkill node-template; scripts/ABCD_purge-4-chains.sh
 #
 # version v0.2
+# https://github.com/drandreaskrueger/substrate-starter
+#
 
 SUBSTRATE=node-template
 BASEPATH=/tmp/ABCD

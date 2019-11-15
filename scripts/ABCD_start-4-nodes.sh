@@ -4,6 +4,7 @@
 #                 scripts/ABCD_start-4-nodes.sh
 #
 # version v0.2
+# https://github.com/drandreaskrueger/substrate-starter
 #
 
 SUBSTRATE=node-template
