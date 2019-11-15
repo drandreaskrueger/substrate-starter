@@ -23,22 +23,27 @@ def async_call(command, params=[], callback=None, debug=False, ws_uri=WS_URI):
     """
     
     async def hello(uri):
-        async with websockets.connect(uri) as websocket:
-            message = dict()
-            message["params"] = params
-            message["method"] = command
-            message["jsonrpc"], message["id"] = "2.0", 1
-            if debug:
-                print('Send: >>>> {}'.format(json.dumps(message, indent=4)))
+        
+        try:
+            async with websockets.connect(uri) as websocket:
+                message = dict()
+                message["params"] = params
+                message["method"] = command
+                message["jsonrpc"], message["id"] = "2.0", 1
+                if debug:
+                    print('Send: >>>> {}'.format(json.dumps(message, indent=4)))
+                    
+                await websocket.send(json.dumps(message))
+                data = await websocket.recv()
                 
-            await websocket.send(json.dumps(message))
-            data = await websocket.recv()
-            
-            if debug:
-                print('Receive: <<<< {}'.format(json.dumps(json.loads(data), indent=4)))
-                
-            if callback is not None:
-                callback(data)
+                if debug:
+                    print('Receive: <<<< {}'.format(json.dumps(json.loads(data), indent=4)))
+                    
+                if callback is not None:
+                    callback(data)
+                    
+        except Exception as e:
+            print ("ALERT: (%s) %s" % (type(e), e))
 
     asyncio.get_event_loop().run_until_complete(hello(ws_uri))
     
