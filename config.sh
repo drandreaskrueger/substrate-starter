@@ -64,3 +64,12 @@ settrap () {
     # echo an error message before exiting
     trap 'echo; echo "\"${last_command}\" command filed with exit code $?."' EXIT
 }
+
+chapter () {
+    echo 
+    echo ==========================================
+    echo = $1
+    echo ==========================================
+        
+    $1
+}
