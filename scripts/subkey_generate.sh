@@ -6,6 +6,7 @@
 
 source config.sh
 checknum $1
+settrap
 
 # easier to store & recall in bash arrays when using no spaces, instead use hyphens
 hyphened2seed (){
