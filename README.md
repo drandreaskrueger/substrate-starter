@@ -22,7 +22,12 @@ The built-in keys allow a simple local network too:
 ```
 scripts/ABCD_start-4-nodes.sh
 tail -f logs/ABCD_alice.log logs/ABCD_bob.log logs/ABCD_charlie.log logs/ABCD_dave.log
-sudo pkill node-template
+pkill node-template
 scripts/ABCD_purge-4-chains.sh
 ```
-Esp. if you are new to this, that approach is easiest to understand. But no control over keys, chainspec, etc.
+Esp. if you are new to this, that approach is easiest to understand. But no control over keys, chainspec, etc. And it looks as if always only Alice and Bob are taking turns in authoring blocks ("Starting consensus session on top of parent ..."), while Charlie and Dave always only sync ("Imported ..."):
+
+```
+tail -f logs/ABCD_charlie.log logs/ABCD_dave.log
+tail -f logs/ABCD_alice.log logs/ABCD_bob.log
+```
