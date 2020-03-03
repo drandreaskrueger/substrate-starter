@@ -1,6 +1,6 @@
 CHANGELOG
 
-v0.3
+v0.8
 works with node-template-2.0.0-8b6fe66 ( = substrate 2.0.0-3e651110a ) 
 * aura+grandpa consensus
 * replaced babe with aura everywhere
@@ -8,12 +8,12 @@ works with node-template-2.0.0-8b6fe66 ( = substrate 2.0.0-3e651110a )
 * fixed different list types in subkey_addresses.sh: aura addresses have not weights, grandpa addresses have weight 1
 * remove bootNodes from .json and -raw.json
 * Python first checks whether websockets is installed, or fails with help message
+* much more infos in README.md
 
-
-v0.2
+v0.7
 * worked well with node-template-2.0.0-7d7e74fb7 
 * babe+grandpa consensus
 
 
-< v0.2
+< v0.7
 * see commit history

@@ -3,7 +3,7 @@
 # start this with:
 #                 sudo pkill node-template; scripts/ABCD_purge-4-chains.sh
 #
-# version v0.2
+# version v0.3
 # https://github.com/drandreaskrueger/substrate-starter
 #
 

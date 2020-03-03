@@ -3,7 +3,7 @@
 #
 # json list of generated addresses, for inserting into my own chainspec, with jq
 #
-# version 0.7
+# version 0.8
 # https://github.com/drandreaskrueger/substrate-starter
 
 source config.sh

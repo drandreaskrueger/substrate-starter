@@ -2,7 +2,7 @@
 """
 @summary: insert pre-generated keys into N substrate nodes
 
-@version: v0.7 (15/November/2019)
+@version: v0.8 (3/March/2020)
 @since:   14/November/2019
 @author:  https://github.com/drandreaskrueger
 @see:     https://github.com/drandreaskrueger/substrate-starter

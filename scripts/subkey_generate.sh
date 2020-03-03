@@ -1,7 +1,7 @@
 # start this with:
 #                  scripts/subkey_generate.sh 4
 #
-# version 0.7
+# version 0.8
 # https://github.com/drandreaskrueger/substrate-starter
 
 source config.sh
