@@ -9,13 +9,16 @@
 source config.sh
 checknum $1
 
+# aura addresses are a simple list: 
+PERHAPS_BEGIN_LIST=""
+PERHAPS_ADD_ONE=""
+
 if [ "$2" = "aura" ]; then
     CRYPTOGRAPHY=--sr25519
-    PERHAPS_BEGIN_LIST=""
-    PERHAPS_ADD_ONE=""
 fi
 if [ "$2" = "grandpa" ]; then
     CRYPTOGRAPHY=--ed25519
+	# weight 1 for each of them:
     PERHAPS_BEGIN_LIST="["
     PERHAPS_ADD_ONE=",1]"
 fi

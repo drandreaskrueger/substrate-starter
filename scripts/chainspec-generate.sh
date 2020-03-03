@@ -26,7 +26,9 @@ echo swapping out aura and grandpa from that json file, into new file $filename_
 # this line is good for debugging as it outputs .genesis.runtime.{aura,grandpa} to stdout:
 # jq '.genesis.runtime.aura.authorities='$($SCRIPTS/subkey_addresses.sh $NUM aura) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) | jq '.genesis.runtime.grandpa,.genesis.runtime.aura'
 # exit
-jq '.genesis.runtime.aura.authorities='$($SCRIPTS/subkey_addresses.sh $NUM aura) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) > $filename_my_chainspec
+
+# replace aura and grandpa addresses, and remove the hardcoded bootNodes
+jq '.genesis.runtime.aura.authorities='$($SCRIPTS/subkey_addresses.sh $NUM aura) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) | jq '.bootNodes=[]'   > $filename_my_chainspec
 wc $filename_my_chainspec
 
 # echo
@@ -36,7 +38,8 @@ wc $filename_my_chainspec
 echo
 filename_my_raw=$GENERATED/$FILESTUB-raw.json
 echo transforming that file into "raw" chainspec file $filename_my_raw
-node-template build-spec --chain $filename_my_chainspec --raw > $filename_my_raw
+# remove the hardcoded bootNodes again:
+node-template build-spec --chain $filename_my_chainspec --raw | jq '.bootNodes=[]' > $filename_my_raw
 wc $filename_my_raw
 
 echo
