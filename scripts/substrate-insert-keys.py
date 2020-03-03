@@ -8,8 +8,15 @@
 @see:     https://github.com/drandreaskrueger/substrate-starter
 """
 
-import json, asyncio, websockets, sys, os
-import websockets # pip3 install websockets
+import json, asyncio, sys, os
+try: 
+    import websockets # pip3 install websockets
+except Exception as e:
+    print (type(e), e)
+    print ("ERROR:      first install the websockets Python library for talking to the node:")
+    print ("SOLUTION:   pip3 install websockets")
+    print ("EXITING.")
+    exit(65)
 
 WS_URI = 'ws://127.0.0.1:9944/'
 
