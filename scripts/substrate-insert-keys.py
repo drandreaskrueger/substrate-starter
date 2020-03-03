@@ -96,8 +96,8 @@ def insertKey(keytype, suri, pubkey, ws_uri):
 def insertKeys(seedphrases, pubkeys, ws_start_uri=WS_URI):
     """
     for many nodes (each one with its unique suri):
-        for babe,gran:
-            call author.insertKey(babe or gran, suri, pubkey) 
+        for aura,gran:
+            call author.insertKey(aura or gran, suri, pubkey) 
     """
     ws_start_port = ws_start_uri.split(":")[2].replace("/","")
     ws_uri_template = ws_start_uri.replace(ws_start_port, "%d")
@@ -110,7 +110,7 @@ def insertKeys(seedphrases, pubkeys, ws_start_uri=WS_URI):
         port = ws_start_port+i
         ws_uri = ws_uri_template % port
         print (ws_uri, " --> ")
-        for keytype in ("babe", "gran"):
+        for keytype in ("aura", "gran"):
             print ("insertKey(%s, %s, %s, %s)" % (keytype, seed[:20]+"...", pk[keytype][:12]+"...", "...:%d" % port), end= " --> ")
             insertKey(keytype, seed, pk[keytype], ws_uri)
         
@@ -134,9 +134,9 @@ def load_pubkeys(N):
     """
     pubkeys=[]
     for i in range(1, N+1):
-        filename = os.path.join(CFG_PATH, "seed%d.babegran" % i)
+        filename = os.path.join(CFG_PATH, "seed%d.auragran" % i)
         with open(filename, "r") as f:
-            pubkeys.append({"babe": f.readline().strip(),
+            pubkeys.append({"aura": f.readline().strip(),
                             "gran": f.readline().strip()})
     return pubkeys
             

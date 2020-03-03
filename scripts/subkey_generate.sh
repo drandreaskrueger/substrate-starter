@@ -38,9 +38,9 @@ do
 done
 
 echo
-echo babe and grandpa ADDRESSES for replacing the section in the chainspec.json:
+echo aura and grandpa ADDRESSES for replacing the section in the chainspec.json:
 echo
-echo "\"babe\"": {"\"authorities\"": [
+echo "\"aura\"": {"\"authorities\"": [
 for (( i=1; i<$NUM+1; i++ ));
 do
     hyphened2seed ${SEEDPHRASES[$i-1]}
@@ -77,11 +77,11 @@ do
     hyphened2seed $suri
     pubkey_sr25519=$(subkey --sr25519 inspect "$seed" | grep "Public key" | awk '{ print $4 }')
     pubkey_ed25519=$(subkey --ed25519 inspect "$seed" | grep "Public key" | awk '{ print $4 }')
-    filename=$GENERATED/seed$i.babegran
+    filename=$GENERATED/seed$i.auragran
     echo $pubkey_sr25519 > $filename
     echo $pubkey_ed25519 >> $filename
     echo $filename
-    echo author.insertKey\(\"babe\",\"$seed\",\"$pubkey_sr25519\"\)
+    echo author.insertKey\(\"aura\",\"$seed\",\"$pubkey_sr25519\"\)
     echo author.insertKey\(\"gran\",\"$seed\",\"$pubkey_ed25519\"\)
 done
 

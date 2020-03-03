@@ -60,7 +60,7 @@ done
 echo
 echo ..... Done .....
 echo
-echo Now insert the babe and grandpa keys. And watch the logs with:
+echo Now insert the aura and grandpa keys. And watch the logs with:
 echo tail -f "$logfiles"
 echo
 echo Show all processes, so you can kill them:

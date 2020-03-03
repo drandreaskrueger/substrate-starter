@@ -8,7 +8,7 @@
 
 source config.sh
 checknum $1
-# NO settrap because want unmodified return value of $SCRIPTS/subkey_addresses.sh $NUM babe
+# NO settrap because want unmodified return value of $SCRIPTS/subkey_addresses.sh $NUM aura
 
 # echo
 # echo make $NUM keys:
@@ -22,11 +22,11 @@ wc $filename_orig
 
 echo
 filename_my_chainspec=$GENERATED/$FILESTUB.json
-echo swapping out babe and grandpa from that json file, into new file $filename_my_chainspec
-# this line is good for debugging as it outputs .genesis.runtime.{babe,grandpa} to stdout:
-# jq '.genesis.runtime.babe.authorities='$($SCRIPTS/subkey_addresses.sh $NUM babe) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) | jq '.genesis.runtime.grandpa,.genesis.runtime.babe'
+echo swapping out aura and grandpa from that json file, into new file $filename_my_chainspec
+# this line is good for debugging as it outputs .genesis.runtime.{aura,grandpa} to stdout:
+# jq '.genesis.runtime.aura.authorities='$($SCRIPTS/subkey_addresses.sh $NUM aura) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) | jq '.genesis.runtime.grandpa,.genesis.runtime.aura'
 # exit
-jq '.genesis.runtime.babe.authorities='$($SCRIPTS/subkey_addresses.sh $NUM babe) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) > $filename_my_chainspec
+jq '.genesis.runtime.aura.authorities='$($SCRIPTS/subkey_addresses.sh $NUM aura) $GENERATED/local.json | jq '.genesis.runtime.grandpa.authorities='$($SCRIPTS/subkey_addresses.sh $NUM grandpa) > $filename_my_chainspec
 wc $filename_my_chainspec
 
 # echo

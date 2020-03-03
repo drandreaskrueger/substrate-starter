@@ -9,15 +9,19 @@
 source config.sh
 checknum $1
 
-if [ "$2" = "babe" ]; then
+if [ "$2" = "aura" ]; then
     CRYPTOGRAPHY=--sr25519
+    PERHAPS_BEGIN_LIST=""
+    PERHAPS_ADD_ONE=""
 fi
 if [ "$2" = "grandpa" ]; then
     CRYPTOGRAPHY=--ed25519
+    PERHAPS_BEGIN_LIST="["
+    PERHAPS_ADD_ONE=",1]"
 fi
 
 if [ -z "$CRYPTOGRAPHY" ]; then
-    echo "must specify babe or grandpa as 2nd arg"
+    echo "must specify aura or grandpa as 2nd arg"
     exit
 fi
 
@@ -27,7 +31,7 @@ do
     filename=$GENERATED/seed$i.secret
     secret=$(cat $filename) 
     address=$(subkey $CRYPTOGRAPHY inspect "$secret" | grep "Address" | awk '{ printf $3 }')
-    printf "["\"$address\"",1]"
+    printf $PERHAPS_BEGIN_LIST\"$address\"$PERHAPS_ADD_ONE
     if [ "$i" -ne "$NUM" ]
     then
         printf ","
