@@ -24,8 +24,8 @@ rpcport=$PORT_RPC
 wsport=$PORT_WS
 # echo $name $port $rpcport $wsport $logfile
  
-echo $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG
-$SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG > $logfile  2>&1 &
+echo nice $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG
+nice $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG > $logfile  2>&1 &
 
 printf "sleep 2 seconds so that the first node has output its identity for sure ... "
 sleep 2
@@ -45,15 +45,17 @@ logfiles=$logfile" "
 
 for (( i=2; i<$NUM+1; i++ ));
 do
-    echo ..... Node 0$i .....
+	NumberWithLeadingZero $i
+    echo ..... Node $Number .....
     port=$(($PORT_P2P-1+i))
     rpcport=$(($PORT_RPC-1+i))
     wsport=$(($PORT_WS-1+i))
-    name=$FILESTUB"-node-0"$i
+    
+    name=$FILESTUB"-node-"$Number
     logfile=$LOGFILES/$name".log"
     # echo $name $port $rpcport $wsport $logfile
-    echo $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG --bootnodes $bootnode 
-    $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG --bootnodes $bootnode > $logfile  2>&1 &
+    echo nice $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG --bootnodes $bootnode 
+    nice $SUBSTRATE --name $name --port $port --rpc-port $rpcport --ws-port $wsport --base-path $BASEPATH/$name $CONFIG --bootnodes $bootnode > $logfile  2>&1 &
     logfiles+="$logfile "
 done
 
