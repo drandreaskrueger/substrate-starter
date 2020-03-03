@@ -1,7 +1,7 @@
 # for 4 nodes start this:
 #                        chainspec-generate.sh 4
 #
-# version 0.8
+# version 0.9
 # https://github.com/drandreaskrueger/substrate-starter
 
 # TODO: remove the bootnode ?
