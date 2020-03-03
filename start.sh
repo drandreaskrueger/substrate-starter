@@ -15,11 +15,30 @@ chapter "scripts/kill-nodes.sh"
 
 chapter "scripts/start-nodes.sh $NUM"
 
-chapter "sleep 3"
+# make these longer if you see: ALERT: (<class 'ConnectionRefusedError'>)
+# during the chapter: scripts/substrate-insert-keys.py $NUM
+SLEEP=3
+if [ "$1" -ge 10 ]; then
+   SLEEP=7
+fi
+if [ "$1" -ge 20 ]; then
+   SLEEP=10
+fi
+if [ "$1" -ge 30 ]; then
+   SLEEP=14
+fi
+if [ "$1" -ge 40 ]; then
+   SLEEP=20
+fi
+if [ "$1" -ge 70 ]; then
+   SLEEP=60
+fi
+
+chapter "sleep $SLEEP"
 
 chapter "scripts/substrate-insert-keys.py $NUM"
 
-chapter "sleep 3"
+chapter "sleep $SLEEP"
  
 chapter "scripts/kill-nodes.sh"
 
