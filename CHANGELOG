@@ -1,5 +1,16 @@
 CHANGELOG
 
+v0.9
+extended from 9 to 99 nodes maximum:
+* changed ports intervall from 9933... to 9800-9899 and 9944... to 9900-9999
+* filenames seed7.secret --> seed07.secret
+* start all nodes with 'nice' to not freeze the machine when many nodes
+* README.md
+  * memory measurements for 10,20,30,40,50,80,99 nodes 
+  * mentioned the error messages when huge number of nodes
+  * manual for node-template installation linked
+* added the web3foundation grants badge
+
 v0.8
 works with node-template-2.0.0-8b6fe66 ( = substrate 2.0.0-3e651110a ) 
 * aura+grandpa consensus
@@ -9,6 +20,7 @@ works with node-template-2.0.0-8b6fe66 ( = substrate 2.0.0-3e651110a )
 * remove bootNodes from .json and -raw.json
 * Python first checks whether websockets is installed, or fails with help message
 * much more infos in README.md
+
 
 v0.7
 * worked well with node-template-2.0.0-7d7e74fb7 
