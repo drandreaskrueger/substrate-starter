@@ -31,7 +31,8 @@ echo writing secretphrases into files:
 echo
 for (( i=1; i<$NUM+1; i++ ));
 do
-    filename=$GENERATED/seed$i.secret
+	NumberWithLeadingZero $i
+    filename=$GENERATED/seed$Number.secret
     hyphened2seed ${SEEDPHRASES[$i-1]}
     echo $seed > $filename
     echo $i $filename
@@ -77,7 +78,8 @@ do
     hyphened2seed $suri
     pubkey_sr25519=$(subkey --sr25519 inspect "$seed" | grep "Public key" | awk '{ print $4 }')
     pubkey_ed25519=$(subkey --ed25519 inspect "$seed" | grep "Public key" | awk '{ print $4 }')
-    filename=$GENERATED/seed$i.auragran
+    NumberWithLeadingZero $i
+    filename=$GENERATED/seed$Number.auragran
     echo $pubkey_sr25519 > $filename
     echo $pubkey_ed25519 >> $filename
     echo $filename

@@ -18,7 +18,11 @@ except Exception as e:
     print ("EXITING.")
     exit(65)
 
-WS_URI = 'ws://127.0.0.1:9944/'
+#PORT_WS=9944 # default
+# made port intervall 100 nodes wide:
+PORT_WS=9900
+
+WS_URI = 'ws://127.0.0.1:%d/' % PORT_WS 
 
 CFG_PATH="generated"
 
@@ -75,7 +79,7 @@ def all_block_numbers(N):
     get block number for several node ports, on the same server
     """
     for i in range(N):
-        port=9944+i
+        port=PORT_WS + i
         print_blocknumber('ws://127.0.0.1:%d/' % port)
         
         
@@ -130,7 +134,7 @@ def load_seeds(N):
     """
     seedphrases=[]
     for i in range(1, N+1):
-        filename = os.path.join(CFG_PATH, "seed%d.secret" % i)
+        filename = os.path.join(CFG_PATH, "seed%02d.secret" % i) # number with leading zero
         with open(filename, "r") as f:
             seedphrases.append(f.readline().strip())
     return seedphrases
@@ -140,8 +144,8 @@ def load_pubkeys(N):
     load the N files, with two lines per file
     """
     pubkeys=[]
-    for i in range(1, N+1):
-        filename = os.path.join(CFG_PATH, "seed%d.auragran" % i)
+    for i in range(1, N+1):    
+        filename = os.path.join(CFG_PATH, "seed%02d.auragran" % i) # number with leading zero
         with open(filename, "r") as f:
             pubkeys.append({"aura": f.readline().strip(),
                             "gran": f.readline().strip()})

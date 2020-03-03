@@ -33,8 +33,12 @@ CONFIG="--validator --chain "$CHAIN" --telemetry-url ws://telemetry.polkadot.io:
 
 # ports of the FIRST node, subsequent nodes are incremented+1
 PORT_P2P=30333
-PORT_RPC=9933
-PORT_WS=9944
+# original port intervall allowed only 10 nodes: 
+#PORT_RPC=9933 # default
+#PORT_WS=9944 # default
+# made port intervall 100 nodes wide:
+PORT_RPC=9800 
+PORT_WS=9900
 
 # first arg must be number of nodes 
 checknum () {
@@ -46,12 +50,12 @@ checknum () {
         exit
     fi
     
-    if [ "$NUM" -ge 10 ] 
+    if [ "$NUM" -ge 100 ] 
     then
-        echo "max number of nodes is 9, then it would need some tiny code upgrades:"
+        echo "max number of nodes is 99, then it would need some tiny code upgrades:"
         echo e.g.
-        echo rpc 9933 + 11 = ws 9944 port collision
-        echo log file names 01 .. 09 ... 10
+        echo rpc $PORT_RPC + 100 = ws $PORT_WS port collision
+        echo log file names 01 .. 99 good ... 100 problem
         exit
     fi
 }
@@ -72,4 +76,26 @@ chapter () {
     echo ==========================================
         
     $1
+}
+
+NumberWithLeadingZero () {
+	if [ "$1" -ge 100 ] 
+	then
+		echo "Not implemented for > 99. EXITING."
+		exit 128
+	fi
+	Number=$1
+	if [ "$Number" -lt 10 ] 
+	then
+		Number="0"$Number
+	fi
+}
+
+testNumberWithLeadingZero () {
+	# bash -c "source config.sh; testNumberWithLeadingZero"
+	NumberWithLeadingZero 1
+	echo $Number
+	NumberWithLeadingZero 10
+	echo $Number
+	NumberWithLeadingZero 100
 }

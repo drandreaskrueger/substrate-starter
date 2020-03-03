@@ -31,7 +31,8 @@ fi
 printf "["
 for (( i=1; i<$NUM+1; i++ ));
 do
-    filename=$GENERATED/seed$i.secret
+	NumberWithLeadingZero $i
+    filename=$GENERATED/seed$Number.secret
     secret=$(cat $filename) 
     address=$(subkey $CRYPTOGRAPHY inspect "$secret" | grep "Address" | awk '{ printf $3 }')
     printf $PERHAPS_BEGIN_LIST\"$address\"$PERHAPS_ADD_ONE

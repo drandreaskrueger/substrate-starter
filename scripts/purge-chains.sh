@@ -14,7 +14,8 @@ echo
 
 for (( i=1; i<$NUM+1; i++ ));
 do
-    name=$FILESTUB"-node-0"$i
+	NumberWithLeadingZero $i
+    name=$FILESTUB"-node-"$Number
     echo node-template purge-chain -y --chain=$CHAIN --base-path $BASEPATH/$name
     node-template purge-chain -y --chain=$CHAIN --base-path $BASEPATH/$name
 done
