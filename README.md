@@ -92,3 +92,8 @@ Esp. if you are new to this, that approach is easiest to understand. But no cont
 tail -f logs/ABCD_charlie.log logs/ABCD_dave.log
 tail -f logs/ABCD_alice.log logs/ABCD_bob.log
 ```
+
+## Credits
+![logo grants badge](img/web3_foundation_grants_badge_black_smaller.png)
+
+This little side project for adapting [chainhammer](https://github.com/drandreaskrueger/chainhammer) to substrate was financed by the web3foundation.
