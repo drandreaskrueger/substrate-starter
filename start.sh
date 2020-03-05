@@ -7,6 +7,9 @@ checknum $1
 
 chapter "echo substrate-starter $VERSION"
 
+# call with source so that the Python virtualenv keeps enabled (so that websockets is available):
+chapter "source scripts/dependencies.sh"
+
 chapter "scripts/subkey_generate.sh $NUM"
 
 chapter "scripts/chainspec-generate.sh $NUM"

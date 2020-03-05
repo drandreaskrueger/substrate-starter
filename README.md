@@ -1,4 +1,4 @@
-# substrate-starter v0.9
+# substrate-starter v0.91
 
 arbitrary number of interconnected substrate nodes, incl key generation, chainspec, etc.
 
@@ -11,10 +11,6 @@ main scripts, what they do, and how often you need them:
 
 ### dependencies
 
-Python library needed:
-
-    pip3 install websockets
-
 This new 2020 script collection does NOT work with older node-template / substrate anymore; they swapped `babe` for `aura`, and that results in slight changes to the chainspec format. So use this node version: [node-template 8b6fe6666d](https://github.com/substrate-developer-hub/substrate-node-template/tree/8b6fe6666d589486dd541663a32ffd98f2e21d74) (which is on the basis of [substrate 3e651110a](https://github.com/paritytech/substrate/tree/3e651110aa06aa835790df63410a29676243fc54)).
 
 Work through the [installation manual](https://substrate.dev/docs/en/overview/getting-started) so that these are available on the `$PATH`:
@@ -23,6 +19,8 @@ Work through the [installation manual](https://substrate.dev/docs/en/overview/ge
     
 > node-template 2.0.0-8b6fe66-x86_64-linux-gnu  
 > subkey 2.0.0  
+
+The Python library `websockets` is needed, and now gets installed in [./start.sh 3](start.sh) in the first called script: [source scripts/dependencies.sh](source scripts/dependencies.sh). If you want to call any of the modular [scripts](scripts) alone, make sure to have that same virtualenv enabled: `source env/bin/activate`.
 
 
 ### how to start

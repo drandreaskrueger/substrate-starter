@@ -1,5 +1,11 @@
 CHANGELOG
 
+v0.91
+* websockets installed in virtualenv, so no version conflicts with other projects on the same machine
+  * new scripts/dependencies.sh does that.
+  * explanations in README.md: source env/bin/activate
+
+
 v0.9
 extended from 9 to 99 nodes maximum:
 * changed ports intervall from 9933... to 9800-9899 and 9944... to 9900-9999
@@ -10,6 +16,7 @@ extended from 9 to 99 nodes maximum:
   * mentioned the error messages when huge number of nodes
   * manual for node-template installation linked
 * added the web3foundation grants badge
+
 
 v0.8
 works with node-template-2.0.0-8b6fe66 ( = substrate 2.0.0-3e651110a ) 
