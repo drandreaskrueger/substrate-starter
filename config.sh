@@ -2,7 +2,7 @@
 
 # folder paths etc, to be loaded from every script.
 
-VERSION=v0.8
+VERSION=v0.91
 
 # binary to use, e.g. node-template, or substrate
 SUBSTRATE=node-template
