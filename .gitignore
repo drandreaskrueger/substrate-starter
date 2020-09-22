@@ -2,4 +2,4 @@
 .pydevproject
 logs/
 generated/
-env/
+env
